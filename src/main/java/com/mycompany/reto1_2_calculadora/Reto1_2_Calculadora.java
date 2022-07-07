@@ -51,10 +51,10 @@ public class Reto1_2_Calculadora {
                                 nivel2 = JOptionPane.showInputDialog(menu2);
                                 switch(nivel2){
                                     case "1": // Suma
-                                        numeros = CapturaNumeros(true);
-                                        resultado = calculadora.sumar(numeros[0], numeros[1]);
-                                        resultado = Math.round(resultado*100.0)/100.0;
-                                        JOptionPane.showMessageDialog(null,"El resultado es: " + resultado);
+                                        numeros = CapturaNumeros(true); //Captura los numeros
+                                        resultado = calculadora.sumar(numeros[0], numeros[1]); // llama la clase y hace la operación
+                                        resultado = Math.round(resultado*100.0)/100.0; //valida 2 decimales
+                                        JOptionPane.showMessageDialog(null,"El resultado es: " + resultado); // muestra el resultado
                                         break;
                                     case "2": //Resta
                                         numeros = CapturaNumeros(true);
@@ -114,6 +114,9 @@ public class Reto1_2_Calculadora {
         }
     }
     
+    // Función que captura los dos numeros de los usuarios
+    // Se usa un ciclo para que continue preguntado por un número si el usuario no digita un numero
+    // Al final reortna un arreglo con los dos numeros digitados
     static int[] CapturaNumeros(boolean flag) {
         String numero1="0";
         String numero2="0";
@@ -131,10 +134,9 @@ public class Reto1_2_Calculadora {
             } while(!isNumeric(numero1));
         }
         return new int[]{Integer.parseInt(numero1),Integer.parseInt(numero2)};        
-        //return new int[]{1, 3, 6, 8, 10};
     }
    
-    //Función que valida si la entrada digitada son numeros
+    //Función que valida si la entrada digitada son numeros y retorna un booleano
     private static boolean isNumeric(String cadena){
             try {
                     Integer.parseInt(cadena);
